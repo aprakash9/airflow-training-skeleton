@@ -34,7 +34,8 @@ args = {
 
 dag = DAG(
     dag_id='branch',
-    default_args=args
+    default_args=args,
+    start_date=airflow.utils.dates.days_ago(2),
     #schedule_interval='0 0 * * *',
     #dagrun_timeout=timedelta(minutes=60),
 )
