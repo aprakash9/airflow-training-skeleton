@@ -52,7 +52,8 @@ branching = BranchPythonOperator(
 days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
 join = DummyOperator(
-    task_id="join"
+    task_id="join",
+    trigger_rule="none_failed"
 )
 
 for day in days:
