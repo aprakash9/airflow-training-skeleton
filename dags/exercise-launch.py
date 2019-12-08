@@ -1,4 +1,6 @@
+import os
 import json
+import tempfile
 import requests
 
 import airflow
@@ -86,14 +88,21 @@ class LaunchToGcsOperator(BaseOperator):
             start_date=self._start_date,
             end_date=self._end_date
         )
-        print(result)
 
-        gcs_hook = GoogleCloudStorageHook(gcp_conn_id=self._gcp_conn_id)
-        gcs_hook.upload(
-            bucket_name=self._output_bucket,
-            object_name=self._output_path,
-            data=json.dumps(result)
+        gcs_hook = GoogleCloudStorageHook(
+            google_cloud_storage_conn_id=self._gcp_conn_id
         )
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_path = os.path.join(tmp_dir, "result.json")
+            with open(tmp_path) as file_:
+                json.dump(result, file_)
+
+            gcs_hook.upload(
+                bucket=self._output_bucket,
+                object=self._output_path,
+                filename=tmp_path
+            )
 
 
 args = {
