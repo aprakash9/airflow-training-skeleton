@@ -71,7 +71,7 @@ class LaunchToGcsOperator(BaseOperator):
 
     @apply_defaults
     def __init__(self, start_date, output_bucket, output_path, end_date=None,
-                 launch_conn_id=None, gcp_conn_id=None, **kwargs):
+                 launch_conn_id=None, gcp_conn_id="google_cloud_default", **kwargs):
         super().__init__(**kwargs)
         self._output_bucket = output_bucket
         self._output_path = output_path
