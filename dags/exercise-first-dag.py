@@ -15,10 +15,10 @@ with DAG(
     #dagrun_timeout=timedelta(minutes=60),
 ) as dag:
 
-    task1 = DummyOperator(id="task1")
-    task2 = DummyOperator(id="task2")
-    task3 = DummyOperator(id="task3")
-    task4 = DummyOperator(id="task4")
-    task5 = DummyOperator(id="task5")
+    task1 = DummyOperator(task_id="task1")
+    task2 = DummyOperator(task_id="task2")
+    task3 = DummyOperator(task_id="task3")
+    task4 = DummyOperator(task_id="task4")
+    task5 = DummyOperator(task_id="task5")
 
     task1 >> task2 >> [task3, task4] >> task5
