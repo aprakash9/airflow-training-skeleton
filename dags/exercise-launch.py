@@ -14,8 +14,8 @@ from airflow.utils.decorators import apply_defaults
 
 
 class LaunchHook(BaseHook):
-    def __init__(self, conn_id=None, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, conn_id=None):
+        super().__init__(source=None)
         self._conn_id = conn_id
 
         self._conn = None
