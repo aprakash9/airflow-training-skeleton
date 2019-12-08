@@ -95,7 +95,7 @@ class LaunchToGcsOperator(BaseOperator):
 
         with tempfile.TemporaryDirectory() as tmp_dir:
             tmp_path = os.path.join(tmp_dir, "result.json")
-            with open(tmp_path) as file_:
+            with open(tmp_path, "w") as file_:
                 json.dump(result, file_)
 
             gcs_hook.upload(
