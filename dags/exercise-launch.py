@@ -9,7 +9,7 @@ from airflow.models import DAG
 from airflow.exceptions import AirflowException
 from airflow.hooks.base_hook import BaseHook
 from airflow.models import BaseOperator
-from airflow.gcp.hooks.gcs import GoogleCloudStorageHook
+from airflow.contrib.hooks.gcs_hook import GoogleCloudStorageHook
 from airflow.utils.decorators import apply_defaults
 
 
