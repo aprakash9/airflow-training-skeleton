@@ -5,6 +5,7 @@ from airflow.operators.dummy_operator import DummyOperator
 args = {
     'owner': 'Airflow',
     'start_date': airflow.utils.dates.days_ago(2),
+    'schedule_interval': None
 }
 
 
