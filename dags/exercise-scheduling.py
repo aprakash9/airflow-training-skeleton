@@ -8,9 +8,9 @@ args = {
 }
 
 with DAG(
-    dag_id='exercise-first-dag',
+    dag_id='exercise-scheduling',
     default_args=args,
-    schedule_interval=None
+    schedule_interval='@daily',
 ) as dag:
 
     task1 = DummyOperator(task_id="task1")
