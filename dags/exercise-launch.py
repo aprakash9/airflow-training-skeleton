@@ -83,12 +83,17 @@ class LaunchToGcsOperator(BaseOperator):
         self._gcp_conn_id = gcp_conn_id
 
     def execute(self, context):
+        self.log.info("Fetching launch data")
         launch_hook = LaunchHook(conn_id=self._launch_conn_id)
         result = launch_hook.get_launches(
             start_date=self._start_date,
             end_date=self._end_date
         )
+        self.log.info("Fetched data for %d launches", len(result))
 
+        self.log.info(
+            "Uploading data to gcs://%s/%s", self._output_bucket, self._output_path
+        )
         gcs_hook = GoogleCloudStorageHook(
             google_cloud_storage_conn_id=self._gcp_conn_id
         )
