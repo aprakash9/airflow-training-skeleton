@@ -17,6 +17,6 @@ with DAG(
     pgsl_to_gcs = PostgresToGoogleCloudStorageOperator(
         task_id="postgres_to_gcs",
         sql="SELECT * FROM land_registry_price_paid_uk WHERE transfer_date = '{{ ds }}'",
-        bucket="airflow-training-data",
+        bucket="airflow-training-data-jrderuiter",
         filename="land_registry_price_paid_uk/{{ ds }}/properties_{}.json", postgres_conn_id="airflow-training-postgres",
     )
