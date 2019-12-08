@@ -14,9 +14,10 @@ from airflow.utils.decorators import apply_defaults
 
 
 class LaunchHook(BaseHook):
-    def __init__(self, conn_id=None):
+    def __init__(self, conn_id=None, api_version=1.4):
         super().__init__(source=None)
         self._conn_id = conn_id
+        self._api_version = api_version
 
         self._conn = None
         self._base_url = None
