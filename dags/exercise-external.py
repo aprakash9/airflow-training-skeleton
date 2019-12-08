@@ -6,7 +6,7 @@ from airflow.models import DAG
 
 args = {
     "owner": "your name",
-    "start_date": airflow.utils.dates.days_ago(3)
+    "start_date": airflow.utils.dates.days_ago(14)
 }
 
 with DAG(
