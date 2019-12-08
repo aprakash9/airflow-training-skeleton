@@ -37,7 +37,7 @@ with DAG(
 
     print_weekday = PythonOperator(
         task_id="print_weekday",
-        python_callable=print_weekday,
+        python_callable=_print_weekday,
         provide_context=True,
     )
 
