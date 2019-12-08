@@ -11,6 +11,8 @@ with DAG(
     dag_id='exercise-scheduling',
     default_args=args,
     schedule_interval='@daily',
+    # Every Mon/Wed/Fri at 13:45: '0 45 13 ? * MON,WED,FRI *'
+    # Every 2.5 hours: timedelta(hours=2, minutes=30)
 ) as dag:
 
     task1 = DummyOperator(task_id="task1")
