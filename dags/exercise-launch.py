@@ -8,7 +8,7 @@ from airflow.contrib.operators.postgres_to_gcs_operator import (
 from airflow.models import DAG
 from airflow.exceptions import AirflowException
 from airflow.hooks.base_hook import BaseHook
-from airflow.operators.base_operator import BaseOperator
+from airflow.models import BaseOperator
 from airflow.gcp.hooks.gcs import GoogleCloudStorageHook
 from airflow.utils.decorators import apply_defaults
 
